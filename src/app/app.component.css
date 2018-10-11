@@ -1,1 +1,3 @@
-@import "~bootstrap/dist/css/bootstrap.css";
+.sticky-top{
+  position: sticky;
+}

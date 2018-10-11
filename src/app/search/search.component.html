@@ -1,45 +1,46 @@
-
-<div class="row">
-  <h3 class="col-md-1 text-center">Elasticsearch server status: {{status}}</h3>
+<div class="jumbotron">
+  <h1 class="display-4">Hello!</h1>
+  <p class="lead">This is a simple Search unit, a simple web-search component for calling Elastic Search attention to featured content or information.</p>
+  <hr class="my-4">
+  <p> </p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 </div>
+<div class="card">
+  <div class="card-header">
+    <h4>Search</h4>
+  </div>
+  <div class="card-body">
+    <form>
+    <div class="row mx-auto " style="margin-bottom: 20px">
+      <input required ngModel name="input" #input="ngModel" class="form-control" type="text" (keyup)="search($event)" (change)="log(input)">
+      <div class="alert alert-danger  col-md-12" *ngIf="input.touched && ! input.valid" >Search require a keyword </div>
+    </div>
+    </form>
+  </div>
+</div>
+<div class="card bg-light">
+  <div class="card-body">
+    <div *ngIf="!other && input.touched && input.valid">
+      <div class="alert alert-danger">No Image Found</div>
+    </div>
 <div class="col-md-12 col-md-offset-3">
-  <div class="row">
-    <h4 class="col-md-12 text-center">Post index</h4>
-  </div>
-  <div class="row">
-    <input matInput #message maxlength="256" placeholder="Message" (keyup)="search($event)">
-  </div>
-
-  <div class="row">
+  <div class="row" >
     <div class="col-sm-6" *ngFor="let x of results">
       <div class="card">
         <div class="card-body">
-          <img class="card-img-top" [src]="address(x)" alt="Card image cap" style="height:10rem; ;overflow: hidden">
+          <img class="card-img-top rounded mx-auto" [src]="address(x)" alt="Card image cap" style="height:15rem;overflow: hidden">
           <h5 class="card-title">{{x._source.title}}</h5>
-          <p class="card-text">{{x._source.tags}}</p>
-          <a class="btn btn-primary">More</a>
+          <p class="card-text">{{ "Date: " + x._source.date_taken}}</p>
+          <div class="row text-center " style="margin: 20px" *ngIf="getTags(x).length" >
+
+          <span class="badge badge-primary " *ngFor="let a of getTags(x);index as i ">{{a}}</span>
+          </div>
+          <hr class="my-4">
+          <button type="button" class="btn btn-primary" (click)="openModal()">More</button>
         </div>
       </div>
     </div>
   </div>
-
-
-  <!---->
-  <!--<mat-grid-list cols="3" rowHeight="300px">-->
-    <!--<div *ngIf="other">-->
-      <!--<p>No Photo Found</p>-->
-    <!--</div>-->
-    <!--<mat-grid-tile *ngFor="let x of results">-->
-
-      <!--<div class="card" style="width: 18rem;">-->
-        <!--<img class="card-img-top" [src]="address(x)" alt="Card image cap" style="height:10rem; ;overflow: hidden">-->
-        <!--<div class="card-body">-->
-          <!--<h5 class="card-title">{{x._source.title}}</h5>-->
-          <!--<p class="card-text">{{x._source.tags}}</p>-->
-          <!--<button mat-flat-button color="accent">More</button>-->
-        <!--</div>-->
-      <!--</div>-->
-
-    <!--</mat-grid-tile>-->
-  <!--</mat-grid-list>-->
+</div>
+</div>
 </div>

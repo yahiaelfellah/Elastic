@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { TestEsComponent } from './test-es/test-es.component';
 import { SearchComponent } from './search/search.component';
 import {FormsModule , ReactiveFormsModule} from '@angular/forms';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestEsComponent,
     SearchComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,6 +20,6 @@ import {FormsModule , ReactiveFormsModule} from '@angular/forms';
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, SearchComponent]
 })
 export class AppModule { }
