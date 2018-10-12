@@ -6,6 +6,7 @@ import { TestEsComponent } from './test-es/test-es.component';
 import { SearchComponent } from './search/search.component';
 import {FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
+import {FileSelectDirective} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ModalComponent } from './modal/modal.component';
     TestEsComponent,
     SearchComponent,
     ModalComponent,
+    FileSelectDirective,
   ],
   imports: [
     BrowserModule,

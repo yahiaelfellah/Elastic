@@ -15,6 +15,10 @@
       <input required ngModel name="input" #input="ngModel" class="form-control" type="text" (keyup)="search($event)" (change)="log(input)">
       <div class="alert alert-danger  col-md-12" *ngIf="input.touched && ! input.valid" >Search require a keyword </div>
     </div>
+      <div class="row mx-auto ">
+        <input type = "file" class="form-control-file" ng2FileSelect [uploader]="">
+        <button type="button" class="btn btn-success mx mx-auto">Search Image</button>
+      </div>
     </form>
   </div>
 </div>

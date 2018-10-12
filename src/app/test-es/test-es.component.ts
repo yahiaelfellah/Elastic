@@ -1,8 +1,10 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { ElasticsearchService} from '../elasticsearch.service';
 import {FormBuilder , FormGroup} from '@angular/forms';
+import {FileUploader} from 'ng2-file-upload';
 
 
+const URL = 'http://localhost:9200/uplaod';
 @Component({
   selector: 'app-test-es',
   templateUrl: './test-es.component.html',
@@ -19,10 +21,18 @@ export class TestEsComponent implements OnInit {
       index: '',
     });
   }
-
+  uploader: FileUploader = new FileUploader({url: URL , itemAlias: 'photo'});
   ngOnInit() {
+  this.uploader.onAfterAddingFile = (file) => {
+    file.withCredentials = false;
+  };
+  this.uploader.onCompleteItem = (item: any, response: any , status: any, header: any ) => {
+    console.log('file uploaded', item, response, status, header);
+    alert('file uploaded successfully');
 
+    };
   }
+
   onSubmit(value) {
     this.es.CreateIndex({index: value.index } ).then(
       result => {
