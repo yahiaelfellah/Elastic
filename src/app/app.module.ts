@@ -2,18 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TestEsComponent } from './test-es/test-es.component';
 import { SearchComponent } from './search/search.component';
 import {FormsModule , ReactiveFormsModule} from '@angular/forms';
-import { ModalComponent } from './modal/modal.component';
 import {FileSelectDirective} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestEsComponent,
     SearchComponent,
-    ModalComponent,
     FileSelectDirective,
   ],
   imports: [

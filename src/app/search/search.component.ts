@@ -2,7 +2,7 @@ import {Component , NgModule , OnInit} from '@angular/core';
 import {ElasticsearchService} from '../elasticsearch.service';
 import {FormGroup} from '@angular/forms';
 import {Image, Found } from './photo';
-import {ModalServiceService} from '../modal-service.service';
+import {FileUploader} from 'ng2-file-upload';
 
 
 @Component({
@@ -22,7 +22,6 @@ export class SearchComponent implements OnInit {
   other: Found ;
   private queryText = '';
   private lastKeyPressed = 0 ;
-  modalService: ModalServiceService;
   constructor(private es: ElasticsearchService) {
     this.queryText = '';
 
@@ -74,13 +73,6 @@ export class SearchComponent implements OnInit {
   empty(a: string) {
     return a.length ? a : 'no Tags' ;
   }
-  openModal(id: string) {
-    this.modalService.open(id);
-    console.log('open');
-  }
 
-  closeModal(id: string) {
-    this.modalService.close(id);
-  }
 
 }
